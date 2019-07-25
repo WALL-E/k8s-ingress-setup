@@ -16,6 +16,9 @@ systemctl enable docker && systemctl restart docker && systemctl status docker
 docker --version && dockerd-ce --version
 
 # 2. install kubeadm
+setenforce 0
+sed -i 's/^SELINUX=enforcing$/SELINUX=permissive/' /etc/selinux/config
+
 cat > /etc/yum.repos.d/kubernetes.repo << EOF
 [kubernetes]
 name=Kubernetes Repository
