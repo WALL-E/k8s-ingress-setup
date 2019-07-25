@@ -5,8 +5,9 @@ metadata:
     annotations:
         nginx.ingress.kubernetes.io/ssl-redirect: "false"
 spec:
-    rules:
-    - http:
+  rules:
+  - host: httpbin.ingress 
+    http:
         paths:
         - path: /
           backend:

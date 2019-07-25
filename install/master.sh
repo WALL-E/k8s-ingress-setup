@@ -4,7 +4,7 @@ set -x
 set -e
 
 # 1. install Docker
-# yum update -y
+yum update -y
 
 yum remove -y docker docker-common docker-selinux docker-engine
 yum install -y yum-utils device-mapper-persistent-data lvm2
@@ -16,8 +16,8 @@ systemctl enable docker && systemctl restart docker && systemctl status docker
 docker --version && dockerd-ce --version
 
 # 2. install kubeadm
-setenforce 0
-sed -i 's/^SELINUX=enforcing$/SELINUX=permissive/' /etc/selinux/config
+# setenforce 0 
+# sed -i 's/^SELINUX=enforcing$/SELINUX=permissive/' /etc/selinux/config
 
 cat > /etc/yum.repos.d/kubernetes.repo << EOF
 [kubernetes]
